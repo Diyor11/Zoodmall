@@ -19,7 +19,7 @@ export default function StickyNavbar() {
 
   return (
     <StickyWrapper scrolled={scrolled}>
-        <NavbarMiddle />
+        <NavbarMiddle scrolled={scrolled} />
     </StickyWrapper>
   )
 }

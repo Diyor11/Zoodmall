@@ -28,8 +28,6 @@ export default function MobilMenu() {
   const {navOpen, navPosition} = useAppSelector(state => state.modals)
   const {setScroll} = useScroll()
 
-  console.log(navPosition)
-
   useEffect(() => {
     setScroll(!navOpen)
   }, [navOpen, setScroll])

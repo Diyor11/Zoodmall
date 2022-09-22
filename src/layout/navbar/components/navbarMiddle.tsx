@@ -14,12 +14,19 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { useAppDispatch } from '../../../features/hooks'
 import { switchNavOpen } from '../../../features/modalsSlice/modalsSlice'
 
-export default function NavbarMiddle() {
+interface Props{
+  scrolled?: boolean
+}
+
+export default function NavbarMiddle({scrolled}: Props) {
 
   const dispatch = useAppDispatch()
   const navRef = useRef<HTMLDivElement | null>(null)
 
   const toggleNav = () => {
+    if(!scrolled && window.scrollY)
+      window.scrollTo({top: 0, left: 0})
+      
     const navbarHeight = navRef.current ? navRef.current.offsetHeight: 101
     dispatch(switchNavOpen({top: navbarHeight.toString()}))
   }
@@ -31,7 +38,7 @@ export default function NavbarMiddle() {
         <div className="header-middle__row">
           <div className="brand">
             <MenuIcon onClick={toggleNav} className='burger__menu'/>
-            <Brand className='brand__icon'/>
+              <Brand className='brand__icon' onClick={}/>
             <Dropdown
                 buttonContent={(
                   <>
