@@ -1,6 +1,6 @@
 import { MenuModal } from '../styles/navbar.menu.styles'
 
-import {ICategory} from '../../../interfaces/category'
+import {ICategory} from '../../../../interfaces/category'
 import { NavLink } from "react-router-dom"
 
 const categories: ICategory[] = [

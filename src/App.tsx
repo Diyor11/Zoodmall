@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 // Components and pages
 import { Cart, Home, Product, Products } from './pages'
-import { Navbar, Main, Footer } from './layout'
+import { Navbar, Main, Footer } from './components/layout'
 // Styles and global theme
 import GlobalStyles from './core-ui/globalStyles'
 import { ThemeProvider } from 'styled-components'

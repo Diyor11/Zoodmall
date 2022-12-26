@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import {IContants} from '../../interfaces/contants'
+import {IConstants} from '../../interfaces/contants'
 
 interface Props{
-    theme: IContants,
+    theme: IConstants,
     open: boolean,
     positions: {top: string},
 }

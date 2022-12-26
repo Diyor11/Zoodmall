@@ -21,7 +21,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src",
+    "src", "src/assets/svg/.d.ts",
   ],
   "exclude": ["node_modules", "src/**/*.spec.ts", "src/**/*.spec.js"]
 }

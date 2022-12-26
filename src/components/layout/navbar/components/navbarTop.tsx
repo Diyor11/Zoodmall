@@ -1,19 +1,19 @@
-import { ElContainer } from '../../../core-ui/container.styles'
+import { ElContainer } from '../../../../core-ui/container.styles'
 import { ElNavbarTop, TopNavLink } from '../styles/navbar.top.styles'
 import {Grid, Stack} from '@mui/material'
 
-import EyeIcon from '../../../assets/icons/eye'
+import EyeIcon from '../../../../assets/icons/eye'
 import Dropdown from './dropdown'
-import StarIcon from '../../../assets/icons/star'
-import SaleBagIcon from '../../../assets/icons/sale-bag'
-import PersonIcon from "../../../assets/icons/person"
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import StarIcon from '../../../../assets/icons/star'
+import SaleBagIcon from '../../../../assets/icons/sale-bag'
+import PersonIcon from "../../../../assets/icons/person"
+import ExpandMoreIcon from '../../../../assets/icons/arrowDown'
 
 export default function NavbarTop() {
 
   return (
     <ElNavbarTop>
-      <ElContainer>
+      <ElContainer noTopSpace>
         <Grid container>
           <Grid item md={8}>
             <Stack direction='row'>

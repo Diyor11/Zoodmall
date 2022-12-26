@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-import { IContants } from '../../../interfaces/contants'
+import { IConstants } from '../../../../interfaces/contants'
 
 type ThemeProps = {
-    theme: IContants,
+    theme: IConstants,
 }
 
 export const ElNavWrapper = styled.div`
@@ -27,7 +27,7 @@ export const ElNavWrapper = styled.div`
                 cursor: pointer;
             }
             
-            > svg.brand__icon{
+            > a > svg.brand__icon{
                 width: 120px !important;
                 margin: 0 7px;
             }
@@ -48,7 +48,7 @@ export const ElNavWrapper = styled.div`
     }
 
     @media(max-width: 661px){
-        .header-middle__row > .brand >svg.brand__icon{
+        .header-middle__row > .brand > a >svg.brand__icon{
             width: 100px !important;
         }
     }
@@ -69,7 +69,7 @@ export const ElNavWrapper = styled.div`
                 display: none;
             }
 
-            > svg.brand__icon{
+            > a .brand__icon{
                 width: 160px;
             }
         } 
@@ -77,7 +77,7 @@ export const ElNavWrapper = styled.div`
             flex-basis: 50%;
 
             form{
-                background-color: ${({theme}: {theme: IContants}) => theme.bg.gray};
+                background-color: ${({theme}: {theme: IConstants}) => theme.bg.gray};
                 padding: 1.12em 1.33em;
                 height: 3em;
                 border-radius: 0.66em;
@@ -89,7 +89,7 @@ export const ElNavWrapper = styled.div`
                     font-size: 1em;
                     width: 90%;
                     border: none;
-                    color: ${({theme}: {theme: IContants}) => theme.color.inputColor};
+                    color: ${({theme}: {theme: IConstants}) => theme.color.inputColor};
                 }
                 .header-search__icon{
                     position: absolute;

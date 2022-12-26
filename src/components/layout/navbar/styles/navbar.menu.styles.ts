@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import {IContants} from '../../../interfaces/contants'
+import {IConstants} from '../../../../interfaces/contants'
 
 type MainProps = {
-    theme: IContants,
+    theme: IConstants,
 }
 
 type Active = {

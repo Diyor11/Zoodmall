@@ -26,7 +26,7 @@ const GlobalStyles = createGlobalStyle`
 
     body{
         background-color: #fbfbfb;
-        min-height: 200vh;
+        font-family: 'Roboto', sans-serif;
     }
 `
 

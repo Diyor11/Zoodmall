@@ -2,10 +2,10 @@ import {useState} from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { MeinMenu, AllCategoryButton, MenuWrapper } from '../styles/navbar.menu.styles'
-import { ElContainer } from '../../../core-ui/container.styles'
+import { ElContainer } from '../../../../core-ui/container.styles'
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import MenuIcon from '../../../assets/icons/menuIcon'
+import MenuIcon from '../../../../assets/icons/menuIcon'
 import MenuModal from './menuModal'
 
 
@@ -17,7 +17,7 @@ export default function NavbarMenu() {
 
   return (
     <MenuWrapper className='header__menu'>
-      <ElContainer>
+      <ElContainer noTopSpace>
         <div className="main-menu">
           <MeinMenu>
             <li className='menu__item' onMouseOver={getOpenModal}>

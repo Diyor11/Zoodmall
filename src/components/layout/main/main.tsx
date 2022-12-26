@@ -1,6 +1,4 @@
-import { ElContainer } from '../../core-ui/container.styles'
-
-import {MobilMenu} from '../../components/'
+import {MobilMenu} from '../../'
 
 interface Props{
     children: React.ReactNode
@@ -9,9 +7,7 @@ interface Props{
 export default function Main({children}: Props) {
   return (
     <main>
-      <ElContainer>
         {children}
-      </ElContainer>
       <MobilMenu />
     </main>
   )

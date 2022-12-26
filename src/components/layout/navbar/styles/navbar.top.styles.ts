@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-import {IContants} from '../../../interfaces/contants'
+import {IConstants} from '../../../../interfaces/contants'
 
 type MainProps = {
-    theme: IContants,
+    theme: IConstants,
     active?: boolean
 }
 
@@ -49,12 +49,14 @@ export const DropDown = styled.div<MainProps>`
 
         >svg.arrow-down{
             color: ${({theme}: MainProps) => theme.bg.blue};
+            margin-left: 5px;
         }
         >.dropdown__text{
             font-family: sans-serif;
             font-size: 14px;
             font-family: 'Roboto', sans-serif;
             color: ${({theme}: MainProps) => theme.bg.blue};
+            margin-right: 3px;
     
             @media(max-width: 991px){
                 font-size: 12px !important;

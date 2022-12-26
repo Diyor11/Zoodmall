@@ -1,18 +1,20 @@
 import { useRef } from 'react'
-import { ElContainer } from '../../../core-ui/container.styles'
+import { NavLink } from 'react-router-dom'
+
+import { ElContainer } from '../../../../core-ui/container.styles'
 import { ElNavWrapper } from '../styles/navbar.middle.styles'
 import { Badge } from '@mui/material'
 import Dropdown from './dropdown'
 
-import Brand from '../../../assets/icons/brand'
-import SearchIcon from '../../../assets/icons/search'
-import HeartIcon from '../../../assets/icons/heart'
-import SaleBag from '../../../assets/icons/sale-bag'
-import MenuIcon from '../../../assets/icons/menu'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import Brand from '../../../../assets/icons/brand'
+import SearchIcon from '../../../../assets/icons/search'
+import HeartIcon from '../../../../assets/icons/heart'
+import SaleBag from '../../../../assets/icons/sale-bag'
+import MenuIcon from '../../../../assets/icons/menu'
+import ArrowDown from '../../../../assets/icons/arrowDown'
 
-import { useAppDispatch } from '../../../features/hooks'
-import { switchNavOpen } from '../../../features/modalsSlice/modalsSlice'
+import { useAppDispatch } from '../../../../features/hooks'
+import { switchNavOpen } from '../../../../features/modalsSlice/modalsSlice'
 
 interface Props{
   scrolled?: boolean
@@ -34,16 +36,18 @@ export default function NavbarMiddle({scrolled}: Props) {
   return (
     <>
     <ElNavWrapper data-header-middle ref={navRef}>
-      <ElContainer>
+      <ElContainer noTopSpace>
         <div className="header-middle__row">
           <div className="brand">
             <MenuIcon onClick={toggleNav} className='burger__menu'/>
-              <Brand className='brand__icon' onClick={}/>
+            <NavLink to='/'>
+              <Brand className='brand__icon'/>
+            </NavLink>
             <Dropdown
                 buttonContent={(
                   <>
                     <div className='dropdown__text'>EN</div>
-                    <ExpandMoreIcon className='arrow-down' />
+                    <ArrowDown className='arrow-down' />
                   </>
                 )}>
                 <ul className='dropdown__menu'>
