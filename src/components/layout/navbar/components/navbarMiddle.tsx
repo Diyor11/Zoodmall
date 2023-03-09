@@ -6,12 +6,14 @@ import { ElNavWrapper } from '../styles/navbar.middle.styles'
 import { Badge } from '@mui/material'
 import Dropdown from './dropdown'
 
+import {languageMenuData} from '../../../../data/constants'
+
 import Brand from '../../../../assets/icons/brand'
 import SearchIcon from '../../../../assets/icons/search'
 import HeartIcon from '../../../../assets/icons/heart'
 import SaleBag from '../../../../assets/icons/sale-bag'
 import MenuIcon from '../../../../assets/icons/menu'
-import ArrowDown from '../../../../assets/icons/arrowDown'
+import ExpandMoreIcon from '../../../../assets/icons/arrowDown'
 
 import { useAppDispatch } from '../../../../features/hooks'
 import { switchNavOpen } from '../../../../features/modalsSlice/modalsSlice'
@@ -44,16 +46,28 @@ export default function NavbarMiddle({scrolled}: Props) {
               <Brand className='brand__icon'/>
             </NavLink>
             <Dropdown
-                buttonContent={(
-                  <>
-                    <div className='dropdown__text'>EN</div>
-                    <ArrowDown className='arrow-down' />
-                  </>
-                )}>
-                <ul className='dropdown__menu'>
-                    <li>RU</li>
-                    <li>UZ</li>
-                </ul>
+              icons={[<ExpandMoreIcon className='arrow-down' />]}
+              label={languageMenuData[0].text}
+              items={languageMenuData}
+              selectable={true}
+            >
+                {(itemData, itemClick) => {
+                  const {id, text} = itemData
+                  const onClick = () => {
+                    itemClick(id, text)
+                    // language change function
+                  }
+
+                  return(
+                    <li 
+                      key={id} 
+                      className='dropdown__item'
+                      onClick={onClick}
+                    >
+                      {text}
+                    </li>
+                  )
+                }}
               </Dropdown>
           </div>
           <div className="header__search">

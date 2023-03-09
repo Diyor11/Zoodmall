@@ -28,19 +28,19 @@ export default function NavbarMenu() {
               </AllCategoryButton>
             </li>
             <li className='menu__item'>
-              <NavLink to='/'>Women's Clothing</NavLink>
+              <NavLink to='/category/womens-clothing'>Women's Clothing</NavLink>
             </li>
             <li className='menu__item'>
-              <NavLink to='/'>Men's Clothing</NavLink>
+              <NavLink to='/category/mens-clothing'>Men's Clothing</NavLink>
             </li>
             <li className='menu__item'>
-              <NavLink to='/'>Phones & Accessories</NavLink>
+              <NavLink to='/category/phone-acces'>Phones & Accessories</NavLink>
             </li>
             <li className='menu__item'>
-              <NavLink to='/'>Compyuter & Office</NavLink>
+              <NavLink to='/category/computer'>Compyuter & Office</NavLink>
             </li>
             <li className='menu__item'>
-              <NavLink to='/'>Consumer & Electroncs</NavLink>
+              <NavLink to='/category/tehnoligy'>Consumer & Electroncs</NavLink>
             </li>
           </MeinMenu>
         </div>

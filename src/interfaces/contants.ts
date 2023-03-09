@@ -1,4 +1,4 @@
-export interface IConstants{
+export type IConstants = {
     bg: {
         gray: string,
         mainBg: string,
@@ -9,3 +9,5 @@ export interface IConstants{
         inputColor: string,
     }
 }
+
+export type VarableType<T = never> = IConstants & T

@@ -1,3 +1,5 @@
+import {DropdownItem} from '../components/layout/navbar/components/dropdown'
+
 export const theme = {
     bg: {
         mainBg: '#ffd200',
@@ -9,3 +11,9 @@ export const theme = {
         inputColor: '#4d4d4d',
     }
 }
+
+export const languageMenuData: DropdownItem[] = [
+    {id: 1, text: 'EN'},
+    {id: 2, text: 'RU'},
+    {id: 3, text: 'UZ'},
+]

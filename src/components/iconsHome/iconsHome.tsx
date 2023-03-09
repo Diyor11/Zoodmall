@@ -1,29 +1,63 @@
-import cashback from '../../assets/images/icon-images/cashback.png'
-import chine from '../../assets/images/icon-images/chine.png'
-import installment from '../../assets/images/icon-images/installment.png'
-import promotions from '../../assets/images/icon-images/promotions.png'
-
+import {useEffect, useState} from 'react'
 import { ElContainer } from '../../core-ui/container.styles'
 import {ElWrapper} from './icons.home.styles'
+import {Grid} from '@mui/material'
+import {SectionTitle} from '../../core-ui/globalStyles'
+import { getCollection } from '../../services/firebase'
 
-const imageIcons = [
-  {src: cashback, label: 'Cashback 10%'},
-  {src: installment, label: 'Installment'},
-  {src: chine, label: 'Best From China'},
-  {src: promotions, label: 'Promotions🔥'},
-] 
+type ServiceType = {
+  src: string,
+  label: string
+}
 
-export default function IconsHome() {
+type BreakPointsType = {
+  xs: number, 
+  sm?: number, 
+  md?: number
+}
+
+interface MainProps{
+  spacing: number;
+  breakpoints: BreakPointsType;
+  itemClassName: string;
+  getDataUrl: string;
+  title?: string;
+  // ElWrapper: React.FC<{children: React.ReactNode}>
+}
+
+export default function IconsHome(
+  {
+    getDataUrl, 
+    spacing, 
+    breakpoints, 
+    itemClassName,
+    title,
+  }: MainProps
+) {
+  const [services, setServices] = useState<ServiceType[]>([])
+
+  useEffect(() => {
+    getCollection<ServiceType>(getDataUrl)
+            .then(data => {
+                setServices(data)
+            })
+  }, [getDataUrl])
+
   return (
-      <ElContainer>
-        <ElWrapper>
-          {imageIcons.map(({src, label}) => (
-            <a href='/#' key={label} className="icons-home_item">
-              <img src={src} alt={label} />
-              <span className="label">{label}</span>
-            </a>
-          ))}
-        </ElWrapper>
-      </ElContainer>
+      <ElWrapper>
+        <ElContainer>
+          {title && (<SectionTitle>{title}</SectionTitle>)}
+          <Grid spacing={spacing} container justifyContent={'space-around'}>
+            {services.map(({src, label} ,index) => (
+              <Grid item {...breakpoints} key={index}>
+                <a href='/#' className={itemClassName}>
+                  <img src={src} alt={label} height="100" width="100" className={`${itemClassName}_image`} />
+                  <span className={`${itemClassName}_label`}>{label}</span>
+                </a>
+              </Grid>
+            ))}
+          </Grid>
+        </ElContainer>
+      </ElWrapper>
   )
 }

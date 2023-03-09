@@ -1,8 +1,8 @@
 import {IConstants} from '../interfaces/contants'
 
-type VarableFunction = ({theme}: {theme: IConstants}) => string
+type VarableFunction<T> = ({theme}: {theme: IConstants & T}) => string
 
-export default function getVarable(...args: string[]): VarableFunction {
+export default function getVarable<T>(...args: string[]): VarableFunction<T> {
     return (data) => {
         let output: any = data
         for(let property of args) {

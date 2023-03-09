@@ -8,9 +8,10 @@ export default function CountDown() {
   const [endTime, setEndTime] = useState<number>(0)
   const {hours, minutes, seconds} = useCountdown({endTime: endTime})
 
+
   useEffect(() => {
-    // fetch data
-    setEndTime(Date.now() + 9999999)
+    const finishAfter: number = 9999999
+    setEndTime(Date.now() + finishAfter)
   }, [])
 
   return (

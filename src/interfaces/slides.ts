@@ -1,6 +1,12 @@
 export type SlideType = {
-    alt: string,
-    img: string
+    url: string,
+    src: string
+}
+
+export type TopBrandType = {
+    url: string,
+    img: string,
+    title: string,
 }
 
 export type SlidesType = SlideType[]

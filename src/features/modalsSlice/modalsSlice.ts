@@ -1,33 +1,50 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 type navPosition = {
     top: string
 }
 
 export interface State{
-    navOpen: boolean;
-    navPosition: navPosition
+    navbar: {
+        open: boolean;
+    } & navPosition,
+    filter: {
+        open: boolean;
+    }
+}
+
+// type ActionType = Omit< PayloadAction<navPosition | false> , 'type'>
+type ActionType<T = never> = {
+    payload: boolean | T 
 }
 
 const initialState: State = {
-    navOpen: false,
-    navPosition: {top: '0'}
+    navbar: {open: false, top: '0'},
+    filter: {open: false},
 }
 
 const modalsSlice = createSlice({
     name:'modalSlice',
     initialState,
     reducers: {
-        switchNavOpen: (state, {payload}: PayloadAction<navPosition>) => {
-            if(state.navOpen) {
-                state.navOpen = false
+        switchNavOpen: (state, {payload}: ActionType<navPosition>) => {
+            if(payload && typeof payload === 'object' && payload?.top) {
+                state.navbar.open = !state.navbar.open
+                state.navbar.top = payload.top
+            } else if(payload === false) {
+                state.navbar.open = false
+                
+            }
+        },
+        switchFilterOpen: (state, {payload} : ActionType<never>) => {
+            if(payload !== undefined) {
+                state.filter.open = payload
             } else {
-                state.navOpen = true
-                state.navPosition.top = payload.top
+                state.filter.open = !state.filter.open
             }
         }
     }
 })
 
-export const { switchNavOpen } = modalsSlice.actions
+export const { switchNavOpen, switchFilterOpen } = modalsSlice.actions
 export default modalsSlice.reducer

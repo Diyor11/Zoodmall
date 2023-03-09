@@ -1,5 +1,6 @@
 interface Props{
-  className: string;
+  className?: string;
+  width? : string;
 }
 
 export default function Brand(props: Props) {

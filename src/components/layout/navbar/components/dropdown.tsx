@@ -1,15 +1,40 @@
-import {useState, ReactNode, useEffect, useRef, ReactElement} from 'react'
+import {useState, ReactNode, useEffect, useRef} from 'react'
 
 import {DropDown} from '../styles/navbar.top.styles'
 
-interface DropdownProps{
-    children: ReactNode;
-    buttonContent: string | ReactElement
+export type DropdownItem = {
+    id: number | string,
+    text: string,
+    url?: string, 
 }
 
-export default function Dropdown({children, buttonContent}: DropdownProps) {
+type ItemClick = (
+    id: number | string, text: string
+) => void
 
-    const [dropdown, setDropwdown] = useState(false)
+type ChildrenType = (
+    itemData: DropdownItem, 
+    itemClick: ItemClick
+) => ReactNode;
+
+interface DropdownProps{
+    children: ChildrenType;
+    icons?: JSX.Element | JSX.Element[];
+    selectable?: boolean,
+    items: DropdownItem[];
+    label: string;
+}
+
+export default function Dropdown({
+    children, 
+    label ='', 
+    icons, 
+    selectable = false,
+    items
+}: DropdownProps) {
+
+    const [dropdown, setDropwdown] = useState<boolean>(false)
+    const [toggleText, setToggleText] = useState<string>(label)
     const dropdownToggle = useRef<HTMLDivElement | null>(null)
 
     const handleClick = () => setDropwdown(p => !p)
@@ -24,14 +49,22 @@ export default function Dropdown({children, buttonContent}: DropdownProps) {
         return () => document.removeEventListener('click', lisner)
     }, [])
 
+    const itemClick: ItemClick = (_, newLable) => {
+        setDropwdown(false)
+
+        if(selectable)
+            setToggleText(newLable)
+    }
+
   return (
     <DropDown data-dropdown active={dropdown} ref={dropdownToggle}>
         <div className='dropdown__button' data-dropdown-button onClick={handleClick}>
-            {buttonContent}
+            <div className='dropdown__text'>{toggleText}</div>
+            {icons && icons}
         </div>
-        <>
-            {children}
-        </>  
+        <ul className='dropdown__menu'>
+            {items && items.map((itemData) => children(itemData, itemClick))}
+        </ul>  
     </DropDown>
   )
 }
