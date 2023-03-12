@@ -1,7 +1,7 @@
 import { Card } from '../flash.sale.styles';
 import phoneImg from '../../../assets/products/phone1.jfif'
 
-interface MainProps{
+// interface MainProps{
     // space: number;
     // width: number;
     // img: string;
@@ -9,7 +9,7 @@ interface MainProps{
     // skit: number;
     // price: number;
     // desc: string;
-}
+// }
 
 export default function PhoneCard(
   // {desc, img, price, skit, space, status, width}: MainProps
